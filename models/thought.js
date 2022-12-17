@@ -3,7 +3,7 @@ const reactionSchema = require("./Reaction");
 
 const thoughtSchema = new mongoose.Schema(
 	{
-		thoughtTet: {
+		thoughtText: {
 			type: String,
 			required: true,
 			minlength: 1,
