@@ -10,7 +10,7 @@ module.exports = {
 
   //get single thought by id
   getSingleThought(req, res) {
-    Thought.findOne({ _id: req.params.thoughtId })
+    Thought.findOne({ _id: req.params.id })
       .then((thought) =>
         !thought
           ? res.status(404).json({
@@ -42,7 +42,7 @@ module.exports = {
   //update single thought
   updateSingleThought(req, res) {
     Thought.findOneAndUpdate(
-      { _id: req.params.thoughtId },
+      { _id: req.params.id },
       { $set: req.body },
       { runValidators: true, new: true }
     )
@@ -56,7 +56,7 @@ module.exports = {
 
   //delete single thought
   deleteSingleThought(req, res) {
-    Thought.findByIdAndDelete({ _id: req.params.thoughtId })
+    Thought.findOneAndDelete({ _id: req.params.id })
       .then((user) =>
         !user
           ? res.status(404).json({ mesage: "No thought with that ID" })
